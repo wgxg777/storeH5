@@ -47,8 +47,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.my-swipe .van-swipe-item {
-  height: 190px;
+.my-swipe  {
+  padding-bottom: 30px;
 }
 .searchInput {
   height: 45px;
