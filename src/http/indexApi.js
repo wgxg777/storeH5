@@ -9,7 +9,7 @@ export function getIndexCarousel() {
 }
 
 
-export function login(param) { // 开工报告新增
-  const url = 'http://localhost:55899/Login/checkLogin';
-  return http.post(url, param).then((data) => data);
+export function getProductDetail(param) { // 开工报告新增
+  const url = `https://www.fastmock.site/mock/3f8a70ee57336c296feaadb9e87a930a/shop/productDetail?id=${param}`;
+  return http.get(url, {}).then((data) => data);
 }

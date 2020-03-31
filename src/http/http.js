@@ -1,9 +1,21 @@
 import axios from 'axios';
 import { Toast } from 'vant';
 
+
 axios.interceptors.response.use((response) => {
+  Toast.loading({
+    message: '加载中...',
+    forbidClick: true,
+    duration: 0,
+  });
   console.log(response);
+
   if (response.data.code === '1001') {
+    Toast.loading({
+      message: '加载中...',
+      forbidClick: true,
+      duration: 1,
+    });
     return response;
   }
   Toast(response.data.desc);
