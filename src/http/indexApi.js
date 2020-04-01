@@ -9,7 +9,13 @@ export function getIndexCarousel() {
 }
 
 
-export function getProductDetail(param) { // 开工报告新增
+export function getProductDetail(param) {
   const url = `https://www.fastmock.site/mock/3f8a70ee57336c296feaadb9e87a930a/shop/productDetail?id=${param}`;
+  return http.get(url, {}).then((data) => data);
+}
+
+
+export function getOneAllGoods(param) {
+  const url = `http://dingdong-api.nodebook.top/h5/nottoken/getOneAllGoods?id=${param}`;
   return http.get(url, {}).then((data) => data);
 }

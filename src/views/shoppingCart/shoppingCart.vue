@@ -11,7 +11,7 @@
           <div>{{item.name}}</div>
           <div>￥{{item.price}}</div>
         </div>
-        <van-stepper class="steper" v-model="item.num" @change="stepperChange(item)" />
+        <van-stepper class="steper" v-model="item.num" @change="stepperChange(item)"  min="0"  />
       </div>
     </van-checkbox-group>
     <div class="bottom flex flex-align-center">
@@ -31,8 +31,21 @@ export default {
     };
   },
   methods: {
-    stepperChange(e) {
-      this.$store.commit('carChange', e);
+    stepperChange(res) {
+      if (res.num === 0) {
+        this.$dialog.confirm({
+          title: '温馨提示',
+          message: '减到0将删除购物车该商品？',
+          confirmButtonColor: '#3FAE29',
+        }).then(() => {
+          this.$store.commit('carChange', res);
+        }).catch(() => { // 点击 否，数量为1
+          this.$dialog.close();
+          this.$store.commit('carChange', res);
+        });
+      } else {
+        this.$store.commit('carChange', res);
+      }
     },
     checkAll() {
       if (this.checked) {
@@ -68,6 +81,7 @@ export default {
   font-size: 16px;
   height: 50px;
   line-height: 50px;
+  margin-bottom: 1px;
 }
 .check {
   height: 100px;

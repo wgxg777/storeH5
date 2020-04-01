@@ -8,9 +8,8 @@ axios.interceptors.response.use((response) => {
     forbidClick: true,
     duration: 0,
   });
-  console.log(response);
 
-  if (response.data.code === '1001') {
+  if (response.data.code === '1001' || response.data.code === 0) {
     Toast.loading({
       message: '加载中...',
       forbidClick: true,

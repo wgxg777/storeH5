@@ -37,6 +37,11 @@ export default new Vuex.Store({
     },
     carChange(state, param) {
       const item = state.shoppingCartList.find((i) => i.id === param.id);
+      if (param.num === 0) {
+        const index = state.shoppingCartList.indexOf(item);
+        console.log(index);
+        state.shoppingCartList.splice(index, 1);
+      }
       if (!item) {
         state.shoppingCartList.push({
           ...param,
@@ -52,6 +57,11 @@ export default new Vuex.Store({
   actions: {
 
   },
+  getters: {
+    getCartListLength: (state) => state.shoppingCartList.length,
+
+  },
+
   modules: {
   },
 });
