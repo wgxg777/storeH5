@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    index: 0,
     shoppingCartList: [
       {
         id: '1',
@@ -21,8 +22,24 @@ export default new Vuex.Store({
         num: 1,
       },
     ],
+    addressList: [{
+      id: '1',
+      name: '张三',
+      tel: '13000000000',
+      address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室',
+      isDefault: true,
+    },
+    {
+      id: '2',
+      name: '李四',
+      tel: '1310000000',
+      address: '浙江省杭州市拱墅区莫干山路 50 号',
+    }],
   },
   mutations: {
+    setIndex: (state, index) => {
+      state.index = index;
+    },
     add(state, param) {
       const item = state.shoppingCartList.find((i) => i.id === param.id);
       if (!item) {

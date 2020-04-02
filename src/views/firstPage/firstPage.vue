@@ -421,6 +421,11 @@ export default {
       px: 25 / 37.5,
     };
   },
+  watch: {
+    $route() {
+      this.init();
+    },
+  },
   methods: {
     swipeClick(e) {
       console.log(e);

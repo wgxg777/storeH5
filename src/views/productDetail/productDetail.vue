@@ -38,7 +38,7 @@
 
       <div class="di">我也是有底线的~</div>
       <van-goods-action>
-        <van-goods-action-icon icon="cart-o" text="购物车"  />
+        <van-goods-action-icon icon="cart-o" text="购物车" :badge="getCartListLength"  @click="goCar"/>
         <van-goods-action-button type="warning" text="加入购物车" @click="addCar" />
         <van-goods-action-button type="danger" text="立即购买" />
       </van-goods-action>
@@ -58,6 +58,7 @@ export default {
       list: [],
     };
   },
+
   methods: {
     addCar() {
       this.$store.commit('add', { id: this.list.id });
@@ -70,6 +71,10 @@ export default {
       getProductDetail(this.$route.query.id).then((res) => {
         this.list = res.data;
       });
+    },
+    goCar() {
+      this.$store.commit('setIndex', 2);
+      this.$router.go(-1);
     },
     swipeClick(index) {
       const bigThis = this;
@@ -85,6 +90,11 @@ export default {
   },
   mounted() {
     this.init();
+  },
+  computed: {
+    getCartListLength() { // 通过方法访问
+      return this.$store.getters.getCartListLength;
+    },
   },
 };
 </script>
