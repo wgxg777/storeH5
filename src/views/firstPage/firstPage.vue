@@ -13,7 +13,7 @@
       </van-swipe-item>
     </van-swipe>
     <div class="icons " @scroll.passive="getScroll($event)">
-      <div class="flex">
+      <div class="flex ">
         <div class="flex-v pd">
           <van-image
             width="1.3513513513513513rem"
@@ -96,7 +96,7 @@
           <div style="text-align:center">超市</div>
         </div>
       </div>
-      <div class="flex">
+      <div class="flex ">
         <div class="flex-v pd">
           <van-image
             width="1.3513513513513513rem"
@@ -536,7 +536,7 @@ export default {
   overflow: scroll;
 }
 .icons {
-  width: 365px;
+  width: 100%;
   height: 190px;
   margin-right: 10px;
 
