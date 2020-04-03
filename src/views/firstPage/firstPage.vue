@@ -12,8 +12,8 @@
         <img :src="item.src" class="img" />
       </van-swipe-item>
     </van-swipe>
-    <div class="icons " @scroll.passive="getScroll($event)">
-      <div class="flex ">
+    <div class="icons" @scroll.passive="getScroll($event)">
+      <div class="flex">
         <div class="flex-v pd">
           <van-image
             width="1.3513513513513513rem"
@@ -96,7 +96,7 @@
           <div style="text-align:center">超市</div>
         </div>
       </div>
-      <div class="flex ">
+      <div class="flex">
         <div class="flex-v pd">
           <van-image
             width="1.3513513513513513rem"
@@ -180,7 +180,7 @@
         </div>
       </div>
     </div>
-     <div class="soc">
+    <div class="soc">
       <div class="inx" v-bind:style="{  marginRight: px + 'rem' }"></div>
     </div>
 
@@ -252,7 +252,7 @@
         icon="https://img30.360buyimg.com/mobilecms/jfs/t1/85459/31/2223/7469/5dcd0bccE231f1acd/3e9a7e6117c23567.png"
         text="家居时尚"
       />
-    </van-grid> -->
+    </van-grid>-->
 
     <div class="flex flex-pack-between ml10 mr10">
       <div class="title">限时抢购</div>
@@ -403,8 +403,6 @@
         <div class="pay">￥100</div>
       </div>
     </div>
-
-
   </div>
 </template>
 
@@ -465,6 +463,8 @@ export default {
 .my-swipe {
   padding-bottom: 30px;
   margin-top: 45px;
+}
+::v-deep .van-swipe-item {
 }
 .searchInput {
   height: 45px;
@@ -529,7 +529,7 @@ export default {
   width: 25px;
   height: 5px;
   border-radius: 8px;
-  background-color: #3FAE29;
+  background-color: #3fae29;
   float: right;
 }
 .vanGrid {
@@ -540,8 +540,7 @@ export default {
   height: 190px;
   margin-right: 10px;
 
-
- &::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     //width: 0;
     //height: 0;
     display: none;
@@ -549,8 +548,6 @@ export default {
   overflow: scroll;
 }
 .pd {
-  margin:1.8px 12.3px;
-
-
+  margin: 1.8px 12.3px;
 }
 </style>

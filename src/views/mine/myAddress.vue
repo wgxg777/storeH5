@@ -45,10 +45,10 @@ export default {
       this.$router.back(-1);
     },
     onAdd() {
-      Toast('新增地址');
+      this.$router.push({ path: '/addAddress' });
     },
-    onEdit(item, index) {
-      Toast(`编辑地址:${index}`);
+    onEdit(item) {
+      this.$router.push({ name: 'addAddress', params: item });
     },
   },
   computed: {

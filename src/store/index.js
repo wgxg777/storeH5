@@ -28,17 +28,35 @@ export default new Vuex.Store({
       tel: '13000000000',
       address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室',
       isDefault: true,
+      areaCode: '330106',
+      addressDetail: '138 号东方通信大厦 7 楼 501 室',
     },
     {
       id: '2',
       name: '李四',
       tel: '1310000000',
       address: '浙江省杭州市拱墅区莫干山路 50 号',
+      areaCode: '330105',
+      addressDetail: '莫干山路 50 号',
     }],
   },
   mutations: {
     setIndex: (state, index) => {
       state.index = index;
+    },
+    addAddress(state, param) {
+      const obj = param;
+      obj.id = state.addressList.length + 1;
+      state.addressList.push(obj);
+    },
+    deleteAddress(state, param) {
+      const item = state.addressList.find((i) => i.id === param.id);
+      const index = state.addressList.indexOf(item);
+      state.addressList.splice(index, 1);
+    },
+    editAddress(state, param) {
+      const item = state.addressList.find((i) => i.id === param.id);
+      Object.assign(item, param);
     },
     add(state, param) {
       const item = state.shoppingCartList.find((i) => i.id === param.id);
