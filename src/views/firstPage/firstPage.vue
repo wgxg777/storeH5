@@ -7,7 +7,7 @@
       class="searchInput"
       shape="round"
     />
-    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="#3FAE29">
+    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="#3FAE29" v-if="this.$store.state.index === 0">
       <van-swipe-item v-for="item in carouselSrc" v-bind:key="item.id" @click="swipeClick(item)">
         <img :src="item.src" class="img" />
       </van-swipe-item>

@@ -17,12 +17,15 @@
     <div class="bottom flex flex-align-center">
       <van-checkbox v-model="checked" @change="checkAll" class="checkAll">全选</van-checkbox>
       <div class="total">总价：{{total}} 元</div>
-      <van-button round type="primary" size="small" class="mt5">结算</van-button>
+      <van-button round type="primary" size="small" class="mt5" @click="orderNow">结算</van-button>
     </div>
+
   </div>
 </template>
 
 <script>
+import { Toast } from 'vant';
+
 export default {
   data() {
     return {
@@ -31,6 +34,18 @@ export default {
     };
   },
   methods: {
+    orderNow() {
+      if (this.result.length === 0) {
+        Toast('请选择要付款的项目');
+        return;
+      }
+      const obj = {};
+      obj.list = this.result;
+      obj.total = this.total;
+      this.$store.commit('saveOrder', obj);
+      console.log(this.result);
+      this.$router.push({ name: 'placeOrder' });
+    },
     stepperChange(res) {
       if (res.num === 0) {
         this.$dialog.confirm({
@@ -41,7 +56,9 @@ export default {
           this.$store.commit('carChange', res);
         }).catch(() => { // 点击 否，数量为1
           this.$dialog.close();
-          this.$store.commit('carChange', res);
+          const res1 = res;
+          res1.num = 1;
+          this.$store.commit('carChange', res1);
         });
       } else {
         this.$store.commit('carChange', res);
@@ -66,7 +83,7 @@ export default {
       list.forEach((item) => {
         total += item.price * item.num;
       });
-      return total;
+      return total.toFixed(2);
     },
   },
 };
@@ -110,7 +127,7 @@ export default {
 .bottom {
   width: 100%;
   height: 40px;
-  background-color: rgba(200, 200, 200, 0.3);
+  background-color: rgb(255, 229, 229);
   position: fixed;
   bottom: 50px;
 
@@ -125,4 +142,5 @@ export default {
 width: 50%;
 
 }
+
 </style>

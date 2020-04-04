@@ -4,6 +4,7 @@ import Home from '../views/Home.vue';
 import productDetail from '../views/productDetail/productDetail.vue';
 import myAddress from '../views/mine/myAddress.vue';
 import addAddress from '../views/mine/addAddress.vue';
+import placeOrder from '../views/order/placeOrder.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/addAddress',
     name: 'addAddress',
     component: addAddress,
+  },
+  {
+    path: '/placeOrder',
+    name: 'placeOrder',
+    component: placeOrder,
   },
 ];
 

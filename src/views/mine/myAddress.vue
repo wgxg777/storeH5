@@ -7,7 +7,8 @@
       class="add"
       v-model="chosenAddressId"
       :list="list"
-      :switchable="false"
+      :switchable="switShow"
+      @select="select"
       default-tag-text="默认"
       @add="onAdd"
       @edit="onEdit"
@@ -16,27 +17,13 @@
 </template>
 
 <script>
-import { Toast } from 'vant';
+
 
 export default {
   data() {
     return {
-      chosenAddressId: '1',
-      //   list: [
-      //     {
-      //       id: '1',
-      //       name: '张三',
-      //       tel: '13000000000',
-      //       address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室',
-      //       isDefault: true,
-      //     },
-      //     {
-      //       id: '2',
-      //       name: '李四',
-      //       tel: '1310000000',
-      //       address: '浙江省杭州市拱墅区莫干山路 50 号',
-      //     },
-      //   ],
+      chosenAddressId: this.$store.state.addressDefault.id || '',
+      switShow: false,
 
     };
   },
@@ -50,6 +37,16 @@ export default {
     onEdit(item) {
       this.$router.push({ name: 'addAddress', params: item });
     },
+    select(e) {
+      console.log(e);
+      this.$store.commit('selectAddress', e);
+      this.$router.back(-1);
+    },
+  },
+  mounted() {
+    if (this.$route.query.show === '1') {
+      this.switShow = true;
+    }
   },
   computed: {
     list() {

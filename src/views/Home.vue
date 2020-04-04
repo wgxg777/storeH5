@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <first-page v-if="this.$store.state.index === 0"></first-page>
-    <classify v-if="this.$store.state.index  === 1"></classify>
-    <shopping-cart v-if="this.$store.state.index === 2"></shopping-cart>
-    <mine v-if="this.$store.state.index === 3"></mine>
+    <first-page v-show="this.$store.state.index === 0"></first-page>
+    <classify v-show="this.$store.state.index  === 1"></classify>
+    <shopping-cart v-show="this.$store.state.index === 2"></shopping-cart>
+    <mine v-show="this.$store.state.index === 3"></mine>
     <div class="bott"></div>
     <van-tabbar v-model="active" active-color="#07c160" inactive-color="#000" @change="onChange">
       <van-tabbar-item icon="home-o">首页</van-tabbar-item>

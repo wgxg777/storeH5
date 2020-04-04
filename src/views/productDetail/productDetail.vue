@@ -40,7 +40,7 @@
       <van-goods-action>
         <van-goods-action-icon icon="cart-o" text="购物车" :badge="getCartListLength"  @click="goCar"/>
         <van-goods-action-button type="warning" text="加入购物车" @click="addCar" />
-        <van-goods-action-button type="danger" text="立即购买" />
+        <van-goods-action-button type="danger" text="立即购买" @click="buyNow" />
       </van-goods-action>
     </div>
   </div>
@@ -50,6 +50,7 @@
 import { getProductDetail } from '@/http/indexApi';
 import backIcon from '@/assets/back_icon.png';
 import { ImagePreview } from 'vant';
+
 
 export default {
   data() {
@@ -71,6 +72,17 @@ export default {
       getProductDetail(this.$route.query.id).then((res) => {
         this.list = res.data;
       });
+    },
+    buyNow() {
+      const { list } = this;
+      list.num = 1;
+      const obj = {};
+      obj.list = [];
+      obj.list.push(list);
+      obj.total = list.price * list.num;
+      console.log(obj);
+      this.$store.commit('saveOrder', obj);
+      this.$router.push({ name: 'placeOrder' });
     },
     goCar() {
       this.$store.commit('setIndex', 2);

@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     index: 0,
+    order: {},
     shoppingCartList: [
       {
         id: '1',
@@ -22,6 +23,15 @@ export default new Vuex.Store({
         num: 1,
       },
     ],
+    addressDefault: {
+      id: '1',
+      name: '张三',
+      tel: '13000000000',
+      address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室',
+      isDefault: true,
+      areaCode: '330106',
+      addressDetail: '138 号东方通信大厦 7 楼 501 室',
+    },
     addressList: [{
       id: '1',
       name: '张三',
@@ -44,6 +54,9 @@ export default new Vuex.Store({
     setIndex: (state, index) => {
       state.index = index;
     },
+    saveOrder: (state, param) => {
+      state.order = param;
+    },
     addAddress(state, param) {
       const obj = param;
       obj.id = state.addressList.length + 1;
@@ -58,6 +71,9 @@ export default new Vuex.Store({
       const item = state.addressList.find((i) => i.id === param.id);
       Object.assign(item, param);
     },
+    selectAddress(state, params) {
+      state.addressDefault = params;
+    },
     add(state, param) {
       const item = state.shoppingCartList.find((i) => i.id === param.id);
       if (!item) {
@@ -69,6 +85,13 @@ export default new Vuex.Store({
         // eslint-disable-next-line no-plusplus
         item.num++;
       }
+    },
+    deleteCar(state, param) {
+      param.forEach((item) => {
+        const taget = state.shoppingCartList.find((i) => i.id === item);
+        const index = state.shoppingCartList.indexOf(taget);
+        state.shoppingCartList.splice(index, 1);
+      });
     },
     carChange(state, param) {
       const item = state.shoppingCartList.find((i) => i.id === param.id);

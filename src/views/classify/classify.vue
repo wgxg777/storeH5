@@ -7,8 +7,8 @@
     <div class="flex flex-v rightCon">
       <div
         class="classView flex flex-align-center"
-        v-for="classView in classList"
-        v-bind:key="classView.id"
+        v-for=" (classView,index) in classList"
+        v-bind:key="index"
       >
         <van-image
           class="flex-1 img"
