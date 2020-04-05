@@ -5,6 +5,7 @@ import productDetail from '../views/productDetail/productDetail.vue';
 import myAddress from '../views/mine/myAddress.vue';
 import addAddress from '../views/mine/addAddress.vue';
 import placeOrder from '../views/order/placeOrder.vue';
+import myOrder from '../views/myOrder/myOrder.vue';
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/placeOrder',
     name: 'placeOrder',
     component: placeOrder,
+  },
+  {
+    path: '/myOrder',
+    name: 'myOrder',
+    component: myOrder,
   },
 ];
 

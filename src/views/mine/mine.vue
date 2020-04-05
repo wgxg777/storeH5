@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="mt10 myOrder bgw">
-      <van-cell value="查看全部订单" icon="orders-o" is-link>
+      <van-cell value="查看全部订单" icon="orders-o" is-link @click="goToOrder">
         <!-- 使用 title 插槽来自定义标题 -->
         <template #title>
           <span class="custom-title">我的订单</span>
@@ -37,10 +37,10 @@
       </van-cell>
       <div class="myOrderIcon">
         <van-grid :border="false" :column-num="5">
-          <van-grid-item icon="paid" text="待支付" />
-          <van-grid-item icon="balance-pay" text="待发货" />
-          <van-grid-item icon="logistics" text="待收货" />
-          <van-grid-item icon="chat-o" text="待评价" />
+          <van-grid-item icon="paid" text="待支付" @click="goToOrder2"/>
+          <van-grid-item icon="balance-pay" text="待发货" @click="goToOrder3" />
+          <van-grid-item icon="logistics" text="待收货" @click="goToOrder4" />
+          <van-grid-item icon="chat-o" text="待评价"  @click="goToOrder5"/>
           <van-grid-item icon="refund-o" text="退款" />
         </van-grid>
       </div>
@@ -59,6 +59,23 @@
 export default {
   data() {
     return {};
+  },
+  methods: {
+    goToOrder() {
+      this.$router.push({ path: '/myOrder' });
+    },
+    goToOrder2() {
+      this.$router.push({ path: '/myOrder?index=2' });
+    },
+    goToOrder3() {
+      this.$router.push({ path: '/myOrder?index=3' });
+    },
+    goToOrder4() {
+      this.$router.push({ path: '/myOrder?index=4' });
+    },
+    goToOrder5() {
+      this.$router.push({ path: '/myOrder?index=5' });
+    },
   },
 };
 </script>
